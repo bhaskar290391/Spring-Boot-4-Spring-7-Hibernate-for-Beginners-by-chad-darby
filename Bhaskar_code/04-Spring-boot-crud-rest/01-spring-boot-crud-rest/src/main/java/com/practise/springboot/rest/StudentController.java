@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.practise.springboot.entity.Student;
+import com.practise.springboot.exception.StudentNotFoundException;
 
 import jakarta.annotation.PostConstruct;
 
@@ -38,6 +39,10 @@ public class StudentController {
 
 	@GetMapping("/students/{studentId}")
 	public Student getStudentData(@PathVariable int studentId) {
+		
+		if(studentId >=data.size() && studentId< 0) {
+			throw new StudentNotFoundException("Student not avaialble for Id "+ studentId);
+		}
 		return data.get(studentId);
 	}
 }
