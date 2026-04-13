@@ -1,5 +1,7 @@
 package com.luv2code.springboot.cruddemo.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -8,11 +10,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfiguration {
 
+	/*
 	@Bean
 	public InMemoryUserDetailsManager manager() {
 
@@ -25,6 +30,13 @@ public class SecurityConfiguration {
 				.roles("EMPLOYEE", "MANAGER", "ADMIN").build();
 
 		return new InMemoryUserDetailsManager(bhaskar, kanishk, samyuktha);
+	}
+	
+	*/
+	
+	@Bean
+	public UserDetailsManager userDetailsManager(DataSource datasource) {
+		return new JdbcUserDetailsManager(datasource);
 	}
 
 	@Bean
