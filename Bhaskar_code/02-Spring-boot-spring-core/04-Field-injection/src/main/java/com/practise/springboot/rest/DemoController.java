@@ -9,17 +9,12 @@ import com.practise.springboot.service.Coach;
 @RestController
 public class DemoController {
 
+	@Autowired
 	private Coach theCoach;
 
-	@Autowired
-	public DemoController(Coach theCoach) {
-		this.theCoach = theCoach;
-	}
-	
 	@GetMapping("/dailyWorkout")
 	public String getDailyWorkout() {
 		return theCoach.getDailyWorkout();
 	}
 
-	
 }

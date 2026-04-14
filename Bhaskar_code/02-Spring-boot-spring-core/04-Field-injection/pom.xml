@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.practise</groupId>
-	<artifactId>01-contruction-injection</artifactId>
+	<artifactId>04-field-injection</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>
