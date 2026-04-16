@@ -19,9 +19,20 @@ public class Application {
 	@Bean
 	public CommandLineRunner dataRunner(AppDao appDao) {
 		return runner -> {
-			getInstructor(appDao);
+			deleteInstructorById(appDao);
+			//getInstructor(appDao);
 			// createInstructor(appDao);
 		};
+	}
+
+	private void deleteInstructorById(AppDao appDao) {
+		int instructorId = 1;
+
+		 appDao.deleteInstructorById(instructorId);
+
+		
+		System.out.println("Delete done !!!");
+		
 	}
 
 	private void getInstructor(AppDao appDao) {

@@ -28,4 +28,14 @@ public class AppDaoIMPL implements AppDao {
 		return manager.find(Instructor.class, id);
 	}
 
+	@Override
+	@Transactional
+	public void deleteInstructorById(int instructorId) {
+		
+		Instructor instructor = manager.find(Instructor.class, instructorId);
+		manager.remove(instructor);
+		
+		
+	}
+
 }
