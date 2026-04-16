@@ -19,8 +19,20 @@ public class Application {
 	@Bean
 	public CommandLineRunner dataRunner(AppDao appDao) {
 		return runner -> {
-			createInstructor(appDao);
+			getInstructor(appDao);
+			// createInstructor(appDao);
 		};
+	}
+
+	private void getInstructor(AppDao appDao) {
+
+		int instructorId = 1;
+
+		Instructor data = appDao.getInstructor(instructorId);
+
+		System.out.println(data);
+		System.out.println("Instructor Details Data " + data.getInstructorDetails());
+
 	}
 
 	private void createInstructor(AppDao appDao) {
@@ -29,7 +41,7 @@ public class Application {
 		InstructorDetails details = new InstructorDetails("bhaskar@youtube.com", "cricket");
 
 		instructor.setInstructorDetails(details);
-		
+
 		System.out.println("Saving an instructor");
 		appDao.save(instructor);
 		System.out.println("Done !!!");

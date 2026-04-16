@@ -22,4 +22,10 @@ public class AppDaoIMPL implements AppDao {
 		manager.persist(instructor);
 	}
 
+	@Override
+	public Instructor getInstructor(long id) {
+
+		return manager.find(Instructor.class, id);
+	}
+
 }
