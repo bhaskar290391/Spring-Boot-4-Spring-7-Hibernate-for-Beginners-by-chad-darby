@@ -37,21 +37,29 @@ public class Application {
 			// fetchInstructorWithCoursesUsingJoinFetch(appDao);
 
 			// updateInstructorById(appDao);
-			//updateCourserById(appDao);
-			deleteInstructorById(appDao);
-			// deleteCourseById;
+			// updateCourserById(appDao);
+			// deleteInstructorById(appDao);
+			deleteCourseById(appDao);
 		};
 	}
 
+	private void deleteCourseById(AppDao appDao) {
+		int courseId = 10;
+
+		appDao.deleteCourseById(courseId);
+		
+		System.out.println("Done !!!");
+	}
+
 	private void updateCourserById(AppDao appDao) {
-		int courseId=10;
-		
+		int courseId = 10;
+
 		Course courseById = appDao.findCourseById(courseId);
-		
-		System.out.println("Course ==>"+ courseById);
-		
+
+		System.out.println("Course ==>" + courseById);
+
 		courseById.setTitle("Bhaksar data fetching");
-		
+
 		appDao.updateCourse(courseById);
 
 	}
