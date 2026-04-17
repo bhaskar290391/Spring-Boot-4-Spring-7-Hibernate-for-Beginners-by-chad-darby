@@ -32,10 +32,25 @@ public class Application {
 			// createCourseByUsingInstructor(appDao);
 			// fetchInstructorWithCourses(appDao);
 
-			//fetchCourseForInstructor(appDao);
-		
-			fetchInstructorWithCoursesUsingJoinFetch(appDao);
+			// fetchCourseForInstructor(appDao);
+
+			// fetchInstructorWithCoursesUsingJoinFetch(appDao);
+
+			updateInstructorById(appDao);
+			// updateCourserById();
+			// deleteInstructorById(appDao);
+			// deleteCourseById;
 		};
+	}
+
+	private void updateInstructorById(AppDao appDao) {
+
+		Instructor instructor = appDao.getInstructor(1);
+
+		System.out.println("Instructor ==> " + instructor);
+
+		instructor.setEmail("mudaliyarbhaskar29@gmail.com");
+		appDao.updateIntructor(instructor);
 	}
 
 	private void fetchInstructorWithCoursesUsingJoinFetch(AppDao appDao) {
@@ -48,9 +63,9 @@ public class Application {
 		System.out.println("Instructor" + instructor);
 
 		System.out.println("Find the courses " + instructor.getCourses());
-		
+
 		System.out.println("Find the instructor Details " + instructor.getCourses());
-		
+
 	}
 
 	private void fetchCourseForInstructor(AppDao appDao) {

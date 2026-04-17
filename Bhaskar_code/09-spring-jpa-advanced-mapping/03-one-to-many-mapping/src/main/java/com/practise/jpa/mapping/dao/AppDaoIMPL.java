@@ -38,6 +38,13 @@ public class AppDaoIMPL implements AppDao {
 	public void deleteInstructorById(int instructorId) {
 
 		Instructor instructor = manager.find(Instructor.class, instructorId);
+
+		List<Course> courses = instructor.getCourses();
+
+		for (Course course : courses) {
+			course.setInstructor(null);
+		}
+
 		manager.remove(instructor);
 
 	}
@@ -79,6 +86,31 @@ public class AppDaoIMPL implements AppDao {
 		Instructor data = instructor.getSingleResult();
 
 		return data;
+	}
+
+	@Override
+	@Transactional
+	public void updateIntructor(Instructor tempIntructor) {
+		manager.merge(tempIntructor);
+	}
+
+	@Override
+	@Transactional
+	public void updateCourse(Course tempCourse) {
+		manager.merge(tempCourse);
+	}
+
+	@Override
+	public Course findCourseById(int courseId) {
+		Course course = manager.find(Course.class, courseId);
+		return course;
+	}
+
+	@Override
+	@Transactional
+	public void deleteCourseById(int courseId) {
+		Course course = manager.find(Course.class, courseId);
+		manager.remove(course);
 	}
 
 }
