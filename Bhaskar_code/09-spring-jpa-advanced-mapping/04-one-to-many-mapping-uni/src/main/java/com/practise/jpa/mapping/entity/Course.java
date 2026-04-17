@@ -1,5 +1,6 @@
 package com.practise.jpa.mapping.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -78,6 +79,14 @@ public class Course {
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", title=" + title + "]";
+	}
+
+	public void add(Reviews review) {
+		if (reviews == null) {
+			reviews = new ArrayList<>();
+		}
+
+		reviews.add(review);
 	}
 
 }
