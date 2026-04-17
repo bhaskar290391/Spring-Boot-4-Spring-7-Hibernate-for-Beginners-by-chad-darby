@@ -1,5 +1,8 @@
 package com.practise.jpa.mapping.dao;
 
+import java.util.List;
+
+import com.practise.jpa.mapping.entity.Course;
 import com.practise.jpa.mapping.entity.Instructor;
 import com.practise.jpa.mapping.entity.InstructorDetails;
 
@@ -14,5 +17,7 @@ public interface AppDao {
 	public InstructorDetails findInstructorDetailById(long id);
 
 	public void deleteInstructorDetailById(int instructorId);
+	
+	public List<Course> fetchCourseByInstructorId(int instructorId);
 
 }

@@ -1,11 +1,15 @@
 package com.practise.jpa.mapping.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
+import com.practise.jpa.mapping.entity.Course;
 import com.practise.jpa.mapping.entity.Instructor;
 import com.practise.jpa.mapping.entity.InstructorDetails;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -50,6 +54,18 @@ public class AppDaoIMPL implements AppDao {
 		instructorDetails.getInstructor().setInstructorDetails(null);
 		manager.remove(instructorDetails);
 
+	}
+
+	@Override
+	public List<Course> fetchCourseByInstructorId(int instructorId) {
+		
+		TypedQuery<Course> course = manager.createQuery("from Course where instructor.id=:data", Course.class);
+		
+		course.setParameter("data", instructorId);
+		
+		List<Course> resultList = course.getResultList();
+		
+		return resultList;
 	}
 
 }

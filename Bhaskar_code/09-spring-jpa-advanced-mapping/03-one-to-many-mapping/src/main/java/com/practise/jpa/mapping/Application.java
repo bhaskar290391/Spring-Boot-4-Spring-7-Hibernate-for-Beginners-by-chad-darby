@@ -1,5 +1,7 @@
 package com.practise.jpa.mapping;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,21 +29,40 @@ public class Application {
 			// findInstructorDetails(appDao);
 			// deleteInstructorDetailById(appDao);
 
-			//createCourseByUsingInstructor(appDao);
-			fetchInstructorWithCourses(appDao);
+			// createCourseByUsingInstructor(appDao);
+			// fetchInstructorWithCourses(appDao);
+
+			fetchCourseForInstructor(appDao);
 		};
 	}
 
-	private void fetchInstructorWithCourses(AppDao appDao) {
-		int instructorid=1;
-		
+	private void fetchCourseForInstructor(AppDao appDao) {
+
+		int instructorid = 1;
+
 		System.out.println("fetching instructor Details");
-		
+
 		Instructor instructor = appDao.getInstructor(instructorid);
-		
-		System.out.println("Instructor" +instructor);
-		System.out.println("Find the courses "+ instructor.getCourses());
-		
+
+		System.out.println("Instructor" + instructor);
+
+		List<Course> fetchCourseByInstructorId = appDao.fetchCourseByInstructorId(instructorid);
+
+		instructor.setCourses(fetchCourseByInstructorId);
+
+		System.out.println("Find the courses " + instructor.getCourses());
+	}
+
+	private void fetchInstructorWithCourses(AppDao appDao) {
+		int instructorid = 1;
+
+		System.out.println("fetching instructor Details");
+
+		Instructor instructor = appDao.getInstructor(instructorid);
+
+		System.out.println("Instructor" + instructor);
+		System.out.println("Find the courses " + instructor.getCourses());
+
 	}
 
 	private void createInstructor(AppDao appDao) {
@@ -96,9 +117,9 @@ public class Application {
 		Instructor instructor = new Instructor("bhaskar", "mudaliyar", "mudaliyar@gmail.com");
 		InstructorDetails details = new InstructorDetails("bhaskar@youtube.com", "cricket");
 
-		Course course1=new Course("java Full stack");
-		Course course2=new Course("Angular");
-		
+		Course course1 = new Course("java Full stack");
+		Course course2 = new Course("Angular");
+
 		instructor.add(course1);
 		instructor.add(course2);
 		instructor.setInstructorDetails(details);
