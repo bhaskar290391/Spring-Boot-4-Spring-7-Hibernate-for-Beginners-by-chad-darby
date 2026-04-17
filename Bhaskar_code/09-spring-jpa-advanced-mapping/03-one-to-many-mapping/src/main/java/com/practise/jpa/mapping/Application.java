@@ -36,11 +36,24 @@ public class Application {
 
 			// fetchInstructorWithCoursesUsingJoinFetch(appDao);
 
-			updateInstructorById(appDao);
-			// updateCourserById();
+			// updateInstructorById(appDao);
+			updateCourserById(appDao);
 			// deleteInstructorById(appDao);
 			// deleteCourseById;
 		};
+	}
+
+	private void updateCourserById(AppDao appDao) {
+		int courseId=10;
+		
+		Course courseById = appDao.findCourseById(courseId);
+		
+		System.out.println("Course ==>"+ courseById);
+		
+		courseById.setTitle("Bhaksar data fetching");
+		
+		appDao.updateCourse(courseById);
+
 	}
 
 	private void updateInstructorById(AppDao appDao) {
