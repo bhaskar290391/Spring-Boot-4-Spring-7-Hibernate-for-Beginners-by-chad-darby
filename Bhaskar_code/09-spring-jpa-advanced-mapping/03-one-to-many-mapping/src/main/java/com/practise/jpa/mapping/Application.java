@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.practise.jpa.mapping.dao.AppDao;
+import com.practise.jpa.mapping.entity.Course;
 import com.practise.jpa.mapping.entity.Instructor;
 import com.practise.jpa.mapping.entity.InstructorDetails;
 
@@ -19,37 +20,27 @@ public class Application {
 	@Bean
 	public CommandLineRunner dataRunner(AppDao appDao) {
 		return runner -> {
-			deleteInstructorDetailById(appDao);
-			//findInstructorDetails(appDao);
 
-			// deleteInstructorById(appDao);
-			// getInstructor(appDao);
 			// createInstructor(appDao);
+			// getInstructor(appDao);
+			// deleteInstructorById(appDao);
+			// findInstructorDetails(appDao);
+			// deleteInstructorDetailById(appDao);
+
+			createCourseByUsingInstructor(appDao);
 		};
 	}
 
-	private void deleteInstructorDetailById(AppDao appDao) {
-		int instructorDetailsId=2;
-		appDao.deleteInstructorDetailById(instructorDetailsId);
-	}
+	private void createInstructor(AppDao appDao) {
 
-	private void findInstructorDetails(AppDao appDao) {
+		Instructor instructor = new Instructor("bhaskar", "mudaliyar", "mudaliyar@gmail.com");
+		InstructorDetails details = new InstructorDetails("bhaskar@youtube.com", "cricket");
 
-		int instructorDetailsId = 2;
+		instructor.setInstructorDetails(details);
 
-		InstructorDetails instructorDetails = appDao.findInstructorDetailById(instructorDetailsId);
-		System.out.println(instructorDetails);
-
-		System.out.println("Instructor Deatils " + instructorDetails.getInstructor());
-	}
-
-	private void deleteInstructorById(AppDao appDao) {
-		int instructorId = 1;
-
-		
-		appDao.deleteInstructorById(instructorId);
-
-		System.out.println("Delete done !!!");
+		System.out.println("Saving an instructor");
+		appDao.save(instructor);
+		System.out.println("Done !!!");
 
 	}
 
@@ -64,17 +55,44 @@ public class Application {
 
 	}
 
-	private void createInstructor(AppDao appDao) {
+	private void deleteInstructorById(AppDao appDao) {
+		int instructorId = 1;
 
+		appDao.deleteInstructorById(instructorId);
+
+		System.out.println("Delete done !!!");
+
+	}
+
+	private void findInstructorDetails(AppDao appDao) {
+
+		int instructorDetailsId = 2;
+
+		InstructorDetails instructorDetails = appDao.findInstructorDetailById(instructorDetailsId);
+		System.out.println(instructorDetails);
+
+		System.out.println("Instructor Deatils " + instructorDetails.getInstructor());
+	}
+
+	private void deleteInstructorDetailById(AppDao appDao) {
+		int instructorDetailsId = 2;
+		appDao.deleteInstructorDetailById(instructorDetailsId);
+	}
+
+	private void createCourseByUsingInstructor(AppDao appDao) {
 		Instructor instructor = new Instructor("bhaskar", "mudaliyar", "mudaliyar@gmail.com");
 		InstructorDetails details = new InstructorDetails("bhaskar@youtube.com", "cricket");
 
+		Course course1=new Course("java Full stack");
+		Course course2=new Course("Angular");
+		
+		instructor.add(course1);
+		instructor.add(course2);
 		instructor.setInstructorDetails(details);
 
 		System.out.println("Saving an instructor");
 		appDao.save(instructor);
 		System.out.println("Done !!!");
-
 	}
 
 }
