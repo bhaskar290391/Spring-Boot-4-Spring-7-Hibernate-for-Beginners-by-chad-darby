@@ -37,8 +37,8 @@ public class Application {
 			// fetchInstructorWithCoursesUsingJoinFetch(appDao);
 
 			// updateInstructorById(appDao);
-			updateCourserById(appDao);
-			// deleteInstructorById(appDao);
+			//updateCourserById(appDao);
+			deleteInstructorById(appDao);
 			// deleteCourseById;
 		};
 	}
