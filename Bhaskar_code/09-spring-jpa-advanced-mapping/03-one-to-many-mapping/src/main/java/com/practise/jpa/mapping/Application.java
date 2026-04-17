@@ -27,8 +27,21 @@ public class Application {
 			// findInstructorDetails(appDao);
 			// deleteInstructorDetailById(appDao);
 
-			createCourseByUsingInstructor(appDao);
+			//createCourseByUsingInstructor(appDao);
+			fetchInstructorWithCourses(appDao);
 		};
+	}
+
+	private void fetchInstructorWithCourses(AppDao appDao) {
+		int instructorid=1;
+		
+		System.out.println("fetching instructor Details");
+		
+		Instructor instructor = appDao.getInstructor(instructorid);
+		
+		System.out.println("Instructor" +instructor);
+		System.out.println("Find the courses "+ instructor.getCourses());
+		
 	}
 
 	private void createInstructor(AppDao appDao) {
