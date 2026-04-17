@@ -32,8 +32,25 @@ public class Application {
 			// createCourseByUsingInstructor(appDao);
 			// fetchInstructorWithCourses(appDao);
 
-			fetchCourseForInstructor(appDao);
+			//fetchCourseForInstructor(appDao);
+		
+			fetchInstructorWithCoursesUsingJoinFetch(appDao);
 		};
+	}
+
+	private void fetchInstructorWithCoursesUsingJoinFetch(AppDao appDao) {
+		int instructorid = 1;
+
+		System.out.println("fetching instructor Details");
+
+		Instructor instructor = appDao.fetchInstructorByIdUsingJoinfetch(instructorid);
+
+		System.out.println("Instructor" + instructor);
+
+		System.out.println("Find the courses " + instructor.getCourses());
+		
+		System.out.println("Find the instructor Details " + instructor.getCourses());
+		
 	}
 
 	private void fetchCourseForInstructor(AppDao appDao) {

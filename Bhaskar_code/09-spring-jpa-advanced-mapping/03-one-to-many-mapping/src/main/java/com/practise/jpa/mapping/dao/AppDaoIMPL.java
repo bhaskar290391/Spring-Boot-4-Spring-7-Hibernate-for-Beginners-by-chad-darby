@@ -58,14 +58,27 @@ public class AppDaoIMPL implements AppDao {
 
 	@Override
 	public List<Course> fetchCourseByInstructorId(int instructorId) {
-		
+
 		TypedQuery<Course> course = manager.createQuery("from Course where instructor.id=:data", Course.class);
-		
+
 		course.setParameter("data", instructorId);
-		
+
 		List<Course> resultList = course.getResultList();
-		
+
 		return resultList;
+	}
+
+	@Override
+	public Instructor fetchInstructorByIdUsingJoinfetch(int instructorId) {
+
+		TypedQuery<Instructor> instructor = manager.createQuery("select i from Instructor i " + "join fetch i.courses "
+				+ "join fetch i.instructorDetails " + " where i.id=:data", Instructor.class);
+
+		instructor.setParameter("data", instructorId);
+
+		Instructor data = instructor.getSingleResult();
+
+		return data;
 	}
 
 }
