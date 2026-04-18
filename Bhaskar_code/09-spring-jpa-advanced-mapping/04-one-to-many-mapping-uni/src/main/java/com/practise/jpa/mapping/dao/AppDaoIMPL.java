@@ -113,4 +113,10 @@ public class AppDaoIMPL implements AppDao {
 		manager.remove(course);
 	}
 
+	@Override
+	@Transactional
+	public void save(Course tempCourse) {
+		manager.persist(tempCourse);
+	}
+
 }

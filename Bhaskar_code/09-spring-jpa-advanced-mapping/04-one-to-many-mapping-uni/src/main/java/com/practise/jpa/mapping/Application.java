@@ -11,6 +11,7 @@ import com.practise.jpa.mapping.dao.AppDao;
 import com.practise.jpa.mapping.entity.Course;
 import com.practise.jpa.mapping.entity.Instructor;
 import com.practise.jpa.mapping.entity.InstructorDetails;
+import com.practise.jpa.mapping.entity.Reviews;
 
 @SpringBootApplication
 public class Application {
@@ -22,8 +23,20 @@ public class Application {
 	@Bean
 	public CommandLineRunner dataRunner(AppDao appDao) {
 		return runner -> {
+			saveCourseWithReviews(appDao);
 
 		};
+	}
+
+	private void saveCourseWithReviews(AppDao appDao) {
+		Course theCourse = new Course("The pacman game for adult");
+
+		theCourse.add(new Reviews("Nice Course"));
+		theCourse.add(new Reviews("Nice Course---> with good knowledge"));
+		theCourse.add(new Reviews("Nice Course---> with good basic"));
+
+		System.out.println("Saving the course ");
+		appDao.save(theCourse);
 	}
 
 	private void deleteCourseById(AppDao appDao) {

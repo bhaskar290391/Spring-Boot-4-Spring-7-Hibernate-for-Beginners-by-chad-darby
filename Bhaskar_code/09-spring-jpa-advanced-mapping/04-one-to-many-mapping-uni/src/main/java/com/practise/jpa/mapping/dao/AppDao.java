@@ -29,5 +29,7 @@ public interface AppDao {
 	public Course findCourseById(int courseId);
 
 	void deleteCourseById(int courseId);
+	
+	public void save(Course tempCourse);
 
 }
