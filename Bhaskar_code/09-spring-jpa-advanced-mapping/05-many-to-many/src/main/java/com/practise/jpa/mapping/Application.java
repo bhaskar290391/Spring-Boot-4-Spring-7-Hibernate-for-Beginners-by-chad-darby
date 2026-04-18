@@ -24,8 +24,6 @@ public class Application {
 	public CommandLineRunner dataRunner(AppDao appDao) {
 		return runner -> {
 
-			
-			
 		};
 	}
 
