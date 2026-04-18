@@ -157,4 +157,16 @@ public class AppDaoIMPL implements AppDao {
 		return data;
 	}
 
+	@Override
+	public Student findStudentById(int studentId) {
+		Student student = manager.find(Student.class, studentId);
+		return student;
+	}
+
+	@Override
+	@Transactional
+	public void updateStudent(Student data) {
+		manager.merge(data);
+	}
+
 }

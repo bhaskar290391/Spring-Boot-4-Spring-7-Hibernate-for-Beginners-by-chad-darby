@@ -27,8 +27,25 @@ public class Application {
 
 			// createCourseAndStudent(appDao);
 			// findCourseAndStudentsByJoinFetch(appDao);
-			findStudentAndCourseByJoinFetch(appDao);
+			// findStudentAndCourseByJoinFetch(appDao);
+			UpdateMoreCoursesForStudent(appDao);
 		};
+	}
+
+	private void UpdateMoreCoursesForStudent(AppDao appDao) {
+
+		int studentId = 1;
+
+		Student data = appDao.findStudentAndcourseByJoinFetch(studentId);
+
+		Course tempCourse = new Course("Angular pratise");
+		Course tempCourse1 = new Course("Microservice");
+
+		data.add(tempCourse);
+		data.add(tempCourse1);
+
+		appDao.updateStudent(data);
+
 	}
 
 	private void findStudentAndCourseByJoinFetch(AppDao appDao) {

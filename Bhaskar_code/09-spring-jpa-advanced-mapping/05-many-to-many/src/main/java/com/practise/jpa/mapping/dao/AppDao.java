@@ -39,4 +39,8 @@ public interface AppDao {
 
 	public Student findStudentAndcourseByJoinFetch(int studentId);
 
+	public  Student findStudentById(int studentId);
+
+	public void updateStudent(Student data);
+
 }
