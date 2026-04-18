@@ -24,7 +24,8 @@ public class Application {
 	public CommandLineRunner dataRunner(AppDao appDao) {
 		return runner -> {
 			// saveCourseWithReviews(appDao);
-			findCourseWithReviews(appDao);
+			//findCourseWithReviews(appDao);
+			deleteCourseById(appDao);
 
 		};
 	}
@@ -50,7 +51,7 @@ public class Application {
 	}
 
 	private void deleteCourseById(AppDao appDao) {
-		int courseId = 10;
+		int courseId = 11;
 
 		appDao.deleteCourseById(courseId);
 
