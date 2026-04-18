@@ -169,4 +169,17 @@ public class AppDaoIMPL implements AppDao {
 		manager.merge(data);
 	}
 
+	@Override
+	@Transactional
+	public void deleteStudentById(int studentId) {
+		Student student = manager.find(Student.class, studentId);
+		
+		List<Course> courses = student.getCourses();
+		
+		for (Course course : courses) {
+			course.getStudents().remove(student);
+		}
+		manager.remove(student);
+	}
+
 }

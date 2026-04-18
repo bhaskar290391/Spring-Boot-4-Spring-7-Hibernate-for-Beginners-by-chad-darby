@@ -29,8 +29,18 @@ public class Application {
 			// findCourseAndStudentsByJoinFetch(appDao);
 			// findStudentAndCourseByJoinFetch(appDao);
 			//UpdateMoreCoursesForStudent(appDao);
-			deleteCourseById(appDao);
+			//deleteCourseById(appDao);
+			deletStudentById(appDao);
 		};
+	}
+
+	private void deletStudentById(AppDao appDao) {
+		int studentId = 1;
+
+		appDao.deleteStudentById(studentId);
+
+		System.out.println("Done !!!");
+		
 	}
 
 	private void UpdateMoreCoursesForStudent(AppDao appDao) {
