@@ -1,6 +1,5 @@
 package com.practise.aop;
 
-import com.practise.aop.dao.AccountDaoImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,7 +26,7 @@ public class Application {
 
 	private void beforeAdviceForAspectProgramming(AccountDao accountDao, MembershipDao membershipDao) {
 		accountDao.addAccount();
-		membershipDao.addAccount();
+		membershipDao.addSillyAccount();
 
 	}
 }
