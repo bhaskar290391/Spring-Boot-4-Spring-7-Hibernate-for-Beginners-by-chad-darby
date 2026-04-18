@@ -119,4 +119,17 @@ public class AppDaoIMPL implements AppDao {
 		manager.persist(tempCourse);
 	}
 
+	@Override
+	public Course findCourseWithReview(int courseId) {
+		TypedQuery<Course> course = manager
+				.createQuery("select c from Course c " + " join fetch c.reviews " + " where c.id=:data", Course.class);
+
+		course.setParameter("data", courseId);
+
+		Course data = course.getSingleResult();
+
+		return data;
+
+	}
+
 }

@@ -23,9 +23,19 @@ public class Application {
 	@Bean
 	public CommandLineRunner dataRunner(AppDao appDao) {
 		return runner -> {
-			saveCourseWithReviews(appDao);
+			// saveCourseWithReviews(appDao);
+			findCourseWithReviews(appDao);
 
 		};
+	}
+
+	private void findCourseWithReviews(AppDao appDao) {
+		int courseId = 11;
+
+		System.out.println("Finding the Course Id");
+		Course courseWithReview = appDao.findCourseWithReview(courseId);
+		System.out.println("Course ==>" + courseWithReview);
+		System.out.println("CourseWithReview ==>" + courseWithReview.getReviews());
 	}
 
 	private void saveCourseWithReviews(AppDao appDao) {
