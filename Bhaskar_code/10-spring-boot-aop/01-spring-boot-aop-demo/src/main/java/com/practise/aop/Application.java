@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.practise.aop.dao.AccountDao;
 import com.practise.aop.dao.MembershipDao;
+import com.practise.aop.model.Account;
 
 @SpringBootApplication
 public class Application {
@@ -25,8 +26,11 @@ public class Application {
 	}
 
 	private void beforeAdviceForAspectProgramming(AccountDao accountDao, MembershipDao membershipDao) {
-		accountDao.addAccount();
+		Account account = new Account();
+		accountDao.addAccount(account);
+		accountDao.doWork();
 		membershipDao.addSillyAccount();
+		membershipDao.doSleep();
 
 	}
 }
