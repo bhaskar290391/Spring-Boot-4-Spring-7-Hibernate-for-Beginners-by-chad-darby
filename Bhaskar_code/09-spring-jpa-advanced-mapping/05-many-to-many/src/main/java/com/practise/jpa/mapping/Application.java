@@ -12,6 +12,7 @@ import com.practise.jpa.mapping.entity.Course;
 import com.practise.jpa.mapping.entity.Instructor;
 import com.practise.jpa.mapping.entity.InstructorDetails;
 import com.practise.jpa.mapping.entity.Reviews;
+import com.practise.jpa.mapping.entity.Student;
 
 @SpringBootApplication
 public class Application {
@@ -24,7 +25,26 @@ public class Application {
 	public CommandLineRunner dataRunner(AppDao appDao) {
 		return runner -> {
 
+			//createCourseAndStudent(appDao);
+			findCourse
 		};
+	}
+
+	private void createCourseAndStudent(AppDao appDao) {
+
+		Course tempCourse = new Course("The Java full stack");
+
+		Student stud = new Student("Bhaskar", "Mudaliyar", "bhaskar@gmail.com");
+		Student stud1 = new Student("Maddy", "Mudaliyar", "Maddy@gmail.com");
+		Student stud2 = new Student("Kanishk", "Mudaliyar", "Kanishk@gmail.com");
+
+		tempCourse.add(stud);
+		tempCourse.add(stud1);
+		tempCourse.add(stud2);
+
+		appDao.save(tempCourse);
+		System.out.println("Done !!!!");
+
 	}
 
 	private void findCourseWithReviews(AppDao appDao) {
