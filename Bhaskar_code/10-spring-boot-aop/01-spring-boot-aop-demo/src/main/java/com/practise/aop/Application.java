@@ -12,12 +12,6 @@ import com.practise.aop.dao.MembershipDao;
 @SpringBootApplication
 public class Application {
 
-	private final AccountDaoImpl accountDaoImpl;
-
-	Application(AccountDaoImpl accountDaoImpl) {
-		this.accountDaoImpl = accountDaoImpl;
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
