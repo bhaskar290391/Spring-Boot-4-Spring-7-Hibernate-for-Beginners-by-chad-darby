@@ -14,7 +14,8 @@ public class MyLoggingAspect {
 	// com.practise.aop.dao.AccountDao.addAccount())")
 	// @Before("execution (public void add*())")
 	//@Before("execution (* add*())")
-	@Before("execution (* add*(com.practise.aop.model.Account))")
+	//@Before("execution (* add*(com.practise.aop.model.Account))")
+	@Before("execution (* add*(..))")
 	public void beforeAdviceTest() {
 		System.out.println("\n ==> adding @Before advice to the Dao implementation");
 	}

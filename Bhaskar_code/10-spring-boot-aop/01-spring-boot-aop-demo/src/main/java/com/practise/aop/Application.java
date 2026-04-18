@@ -27,7 +27,7 @@ public class Application {
 
 	private void beforeAdviceForAspectProgramming(AccountDao accountDao, MembershipDao membershipDao) {
 		Account account = new Account();
-		accountDao.addAccount(account);
+		accountDao.addAccount(account,true);
 		accountDao.doWork();
 		membershipDao.addSillyAccount();
 		membershipDao.doSleep();

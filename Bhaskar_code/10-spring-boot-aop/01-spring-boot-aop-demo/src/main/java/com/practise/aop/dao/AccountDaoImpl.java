@@ -8,7 +8,7 @@ import com.practise.aop.model.Account;
 public class AccountDaoImpl implements AccountDao {
 
 	@Override
-	public void addAccount(Account account) {
+	public void addAccount(Account account,boolean vipFlag) {
 		System.out.println(getClass() + " ==>  Adding DB related work");
 	}
 
