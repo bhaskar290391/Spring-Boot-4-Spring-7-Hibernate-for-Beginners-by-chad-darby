@@ -28,7 +28,8 @@ public class Application {
 			// createCourseAndStudent(appDao);
 			// findCourseAndStudentsByJoinFetch(appDao);
 			// findStudentAndCourseByJoinFetch(appDao);
-			UpdateMoreCoursesForStudent(appDao);
+			//UpdateMoreCoursesForStudent(appDao);
+			deleteCourseById(appDao);
 		};
 	}
 
