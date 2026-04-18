@@ -7,7 +7,7 @@ public class AccountDaoImpl implements AccountDao {
 
 	@Override
 	public void addAccount() {
-		System.out.println("\n "+getClass() + " ==>  Adding DB related work");
+		System.out.println(getClass() + " ==>  Adding DB related work");
 	}
 
 }
