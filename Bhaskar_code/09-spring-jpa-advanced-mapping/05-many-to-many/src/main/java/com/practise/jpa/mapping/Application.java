@@ -26,9 +26,21 @@ public class Application {
 		return runner -> {
 
 			// createCourseAndStudent(appDao);
-			//findCourseAndStudentsByJoinFetch(appDao);
+			// findCourseAndStudentsByJoinFetch(appDao);
 			findStudentAndCourseByJoinFetch(appDao);
 		};
+	}
+
+	private void findStudentAndCourseByJoinFetch(AppDao appDao) {
+
+		int studentId = 1;
+
+		Student tempStudent = appDao.findStudentAndcourseByJoinFetch(studentId);
+
+		System.out.println(tempStudent);
+
+		System.out.println(tempStudent.getCourses());
+
 	}
 
 	private void findCourseAndStudentsByJoinFetch(AppDao appDao) {

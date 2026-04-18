@@ -5,6 +5,7 @@ import java.util.List;
 import com.practise.jpa.mapping.entity.Course;
 import com.practise.jpa.mapping.entity.Instructor;
 import com.practise.jpa.mapping.entity.InstructorDetails;
+import com.practise.jpa.mapping.entity.Student;
 
 public interface AppDao {
 
@@ -36,6 +37,6 @@ public interface AppDao {
 
 	public Course findCourseAndStudentByJoinFetch(int courseId);
 
-	Course findStudentAndcourseByJoinFetch(int studentId);
+	public Student findStudentAndcourseByJoinFetch(int studentId);
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.practise.jpa.mapping.entity.Course;
 import com.practise.jpa.mapping.entity.Instructor;
 import com.practise.jpa.mapping.entity.InstructorDetails;
+import com.practise.jpa.mapping.entity.Student;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -141,18 +142,19 @@ public class AppDaoIMPL implements AppDao {
 
 		Course data = course.getSingleResult();
 
-		return data;	}
-	
-	
+		return data;
+	}
+
 	@Override
-	public Course findStudentAndcourseByJoinFetch(int studentId) {
-		TypedQuery<Course> course = manager
-				.createQuery("select s from Student s " + " join fetch s.courses " + " where s.id=:data", Course.class);
+	public Student findStudentAndcourseByJoinFetch(int studentId) {
+		TypedQuery<Student> student = manager.createQuery(
+				"select s from Student s " + " join fetch s.courses " + " where s.id=:data", Student.class);
 
-		course.setParameter("data", studentId);
+		student.setParameter("data", studentId);
 
-		Course data = course.getSingleResult();
+		Student data = student.getSingleResult();
 
-		return data;	}
+		return data;
+	}
 
 }
