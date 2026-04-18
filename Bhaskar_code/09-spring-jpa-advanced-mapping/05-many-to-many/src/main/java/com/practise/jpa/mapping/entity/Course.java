@@ -79,6 +79,14 @@ public class Course {
 		return reviews;
 	}
 
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
 	public void setReviews(List<Reviews> reviews) {
 		this.reviews = reviews;
 	}

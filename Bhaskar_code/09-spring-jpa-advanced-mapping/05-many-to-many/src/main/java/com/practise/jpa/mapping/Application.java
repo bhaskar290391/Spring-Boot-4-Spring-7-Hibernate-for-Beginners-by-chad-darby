@@ -25,9 +25,22 @@ public class Application {
 	public CommandLineRunner dataRunner(AppDao appDao) {
 		return runner -> {
 
-			//createCourseAndStudent(appDao);
-			findCourse
+			// createCourseAndStudent(appDao);
+			//findCourseAndStudentsByJoinFetch(appDao);
+			findStudentAndCourseByJoinFetch(appDao);
 		};
+	}
+
+	private void findCourseAndStudentsByJoinFetch(AppDao appDao) {
+
+		int courseId = 10;
+
+		Course tempCourse = appDao.findCourseAndStudentByJoinFetch(courseId);
+
+		System.out.println(tempCourse);
+
+		System.out.println(tempCourse.getStudents());
+
 	}
 
 	private void createCourseAndStudent(AppDao appDao) {

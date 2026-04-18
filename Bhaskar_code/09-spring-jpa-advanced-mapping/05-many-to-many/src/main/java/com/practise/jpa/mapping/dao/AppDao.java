@@ -34,4 +34,8 @@ public interface AppDao {
 	
 	public Course findCourseWithReview(int id);
 
+	public Course findCourseAndStudentByJoinFetch(int courseId);
+
+	Course findStudentAndcourseByJoinFetch(int studentId);
+
 }
