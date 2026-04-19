@@ -27,4 +27,10 @@ public class MyLoggingAspect {
 	public void beforeAdviceTest() {
 		System.out.println("\n ==> adding @Before advice to the Dao implementation");
 	}
+	
+	
+	@Before("forDaoPackage()")
+	public void performAnalyticPerformace() {
+		System.out.println("\n ==> Analythic performance");
+	}
 }
